@@ -21,13 +21,23 @@ public class ReadConfig {
 
     public static String sound_on_complete_all;
 
+    public static String Questscrolls_Rank;
+
     public static FileConfiguration fileConfiguration; // 配置文件的主要对象
+
+    public static String Gui_Title;
+
+    public static boolean open_gui_cooling;
+
+    public static String task;
 
     public ReadConfig(FileConfiguration fileConfiguration){ //第一次构建配置参数
 
         ReadConfig.fileConfiguration = fileConfiguration;
 
         variable = Objects.requireNonNull(fileConfiguration.getString("variable")).replace("&","§");
+
+        Questscrolls_Rank = Objects.requireNonNull(fileConfiguration.getString("Questscrolls_Rank")).replace("&","§");
 
         sound_on_complete = fileConfiguration.getString("sound_on_complete");
 
@@ -37,10 +47,16 @@ public class ReadConfig {
 
         sound_effect = fileConfiguration.getBoolean("sound_effect");
 
-        commands.clear(); //先清空集合 避免万一是reload config
+        task = fileConfiguration.getString("player_login_givetask");
+
+        Gui_Title = fileConfiguration.getString("Gui_Title", "Title").replace("&","§");
+
+        commands.clear(); //先清空集合 避免万一是reload congfig
+
+        fileConfiguration.getList("rewards");
 
         if(!fileConfiguration.getBoolean("on_Cumulative")){return;} //如果关闭了累计奖励的功能 就索性不读取了
-        for (Object object : Objects.requireNonNull(fileConfiguration.getList("Cumulative"))) {
+        for (Object object : fileConfiguration.getList("Cumulative")) {
 
             String a = object.toString();
             Integer key = Integer.parseInt(
@@ -57,6 +73,10 @@ public class ReadConfig {
             commands.put(key,value);
         }
 
+    }
+
+    public static void reloadopen_gui_cooling(){
+        open_gui_cooling = fileConfiguration.getBoolean("open_gui_cooling");
     }
 
 }

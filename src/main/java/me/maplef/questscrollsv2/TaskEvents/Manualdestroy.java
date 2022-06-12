@@ -14,7 +14,7 @@ public class Manualdestroy implements Listener {
     @EventHandler
     public void destroy(BlockBreakEvent event){
         if(QuestscrollsCommandExecutor.isQuery){
-            Main.SendManualObject(event.getPlayer(),"destroy(破坏)", ToolClass.nmsblock(event.getBlock()));
+            Main.SendManualObject(event.getPlayer(),"destroy(破坏)",ToolClass.nmsblock(event.getBlock()));
         }
         new MainBusiness().Task("destroy", ToolClass.nmsblock(event.getBlock()),event.getPlayer(),1);
     }

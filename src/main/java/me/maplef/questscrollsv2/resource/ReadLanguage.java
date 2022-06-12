@@ -11,7 +11,7 @@ public class ReadLanguage {
 
     public static String Prefix;
     public static String Delete_Reel;
-    public static String Give_new_Rell;
+    public static String Give_new_Reel;
     public static String Finish_One_Task;
     public static String Finish_All_Task;
     public static String Not_your_own;
@@ -19,16 +19,19 @@ public class ReadLanguage {
     public static String Insufficient_permissions;
     public static String Format_Incorrect;
     public static FileConfiguration fileConfiguration;
+    public static String No_Item;
+    public static String Open_GUI;
+    public static String Gui_Delay;
 
     public static void reloadLanguage(){
 
-        fileConfiguration = YamlConfiguration.loadConfiguration(new File(Main.getPlugin(Main.class).getDataFolder(),"language.yml"));
+        fileConfiguration = YamlConfiguration.loadConfiguration(new File(Main.getInstance().getDataFolder(),"language.yml"));
 
         Prefix = Objects.requireNonNull(fileConfiguration.getString("Prefix")).replace("&","§");
 
         Delete_Reel = Prefix+""+ Objects.requireNonNull(fileConfiguration.getString("Delete_Reel")).replace("&","§");
 
-        Give_new_Rell = Prefix+""+ Objects.requireNonNull(fileConfiguration.getString("Give_new_Rell")).replace("&","§");
+        Give_new_Reel = Prefix+""+ Objects.requireNonNull(fileConfiguration.getString("Give_new_Reel")).replace("&","§");
 
         Finish_One_Task = Prefix+""+ Objects.requireNonNull(fileConfiguration.getString("Finish_One_Task")).replace("&","§");
 
@@ -42,6 +45,11 @@ public class ReadLanguage {
 
         Format_Incorrect = Prefix+""+ Objects.requireNonNull(fileConfiguration.getString("Format_Incorrect")).replace("&","§");
 
+        No_Item = Prefix+""+Objects.requireNonNull(fileConfiguration.getString("No_Item")).replace("&","§");
+
+        Open_GUI = Prefix+""+Objects.requireNonNull(fileConfiguration.getString("Open_GUI")).replace("&","§");
+
+        Gui_Delay = Prefix+""+Objects.requireNonNull(fileConfiguration.getString("Gui_Delay")).replace("&","§");
     }
 
 }

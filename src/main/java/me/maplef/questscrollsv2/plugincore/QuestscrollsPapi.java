@@ -6,18 +6,21 @@ import me.maplef.questscrollsv2.resource.ReadConfig;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class QuestscrollsPapi extends PlaceholderExpansion {
     //下面这三个是必须重写的！
 
-    public String getIdentifier() { //注册的变量的变量名
+    public @NotNull String getIdentifier() { //注册的变量的变量名
         return "Questscrolls";
     }
     //比如 %TaskManualPapi.xxx%
-    public String getAuthor() { //此变量的作者
+    public @NotNull String getAuthor() { //此变量的作者
         return "WeiXiaoDaRen";
     }
 
-    public String getVersion() {    //变量版本
+    public @NotNull String getVersion() {    //变量版本
         return "1.0.0";
     }
 
@@ -40,6 +43,28 @@ public class QuestscrollsPapi extends PlaceholderExpansion {
 
         if(identifier.equalsIgnoreCase("Number")){    //可以一直这么写 想写几个写几个
             return PlayerManualQuantity.getplayerdata(player.getName())+"";
+        }
+
+        // Questscrolls_Rank
+
+        Pattern Pan1 = Pattern.compile("Rank");
+        Pattern Pan2 = Pattern.compile("[0-99999]\\d*");
+
+        if(Pan1.matcher(identifier).find()){ //是否包含了 Questscrolls_Rank
+
+            Matcher Pan3 = Pan2.matcher(identifier);
+            if(Pan3.find()){ //有数字
+
+                String name = PlayerManualQuantity.Pm(Integer.valueOf(Pan3.group()),"");
+
+                return ReadConfig.Questscrolls_Rank.replaceAll("<name>"
+                        ,name).replaceAll("<number>"
+                        ,PlayerManualQuantity.playerdata.get(name)+"");
+                //return PlayerManualQuantity.Pm(Integer.valueOf(Pan3.group()),"");
+            }
+
+            //如果没有数字 则单纯当他是 Questscrolls_Rank 返回玩家的排名
+            return PlayerManualQuantity.Pm(0,player.getName());
         }
 
         return null;

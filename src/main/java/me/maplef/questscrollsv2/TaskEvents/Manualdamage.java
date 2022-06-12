@@ -12,9 +12,10 @@ public class Manualdamage implements Listener {
 
     @EventHandler
     public void damage(PlayerItemBreakEvent event){
+
         if(QuestscrollsCommandExecutor.isQuery){
-            if(event.getBrokenItem().getItemMeta().displayName() == null){
-               Main.SendManualObject(event.getPlayer(),"damage(损坏物品,工具)", ToolClass.nmsitem(event.getBrokenItem()));
+            if(event.getBrokenItem().getItemMeta().getDisplayName() == null){
+                Main.SendManualObject(event.getPlayer(),"damage(损坏物品,工具)", ToolClass.nmsitem(event.getBrokenItem()));
             }else if(event.getBrokenItem().getItemMeta().getDisplayName().equalsIgnoreCase("")){
                 Main.SendManualObject(event.getPlayer(),"damage(损坏物品,工具)", ToolClass.nmsitem(event.getBrokenItem()));
             }else{
@@ -22,13 +23,16 @@ public class Manualdamage implements Listener {
             }
         }
 
-        if(event.getBrokenItem().getItemMeta().displayName() == null){
+        if(event.getBrokenItem().getItemMeta().getDisplayName() == null){
             new MainBusiness().Task("damage", ToolClass.nmsitem(event.getBrokenItem()),event.getPlayer(),1);
-        } else if(event.getBrokenItem().getItemMeta().getDisplayName().equalsIgnoreCase("")){
+        }else if(event.getBrokenItem().getItemMeta().getDisplayName().equalsIgnoreCase("")){
             new MainBusiness().Task("damage", ToolClass.nmsitem(event.getBrokenItem()),event.getPlayer(),1);
-        } else {
-            new MainBusiness().Task("damage", event.getBrokenItem().getItemMeta().getDisplayName().replace("§","&"),event.getPlayer(),1);
+        }else {
+            new MainBusiness().Task("damage", event.getBrokenItem().getItemMeta().getDisplayName(),event.getPlayer(),1);
         }
+
+
     }
 
 }
+

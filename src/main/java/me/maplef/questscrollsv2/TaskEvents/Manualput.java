@@ -21,3 +21,16 @@ public class Manualput implements Listener {
     }
 
 }
+
+//public class Manualput implements Listener {
+//    @EventHandler
+//    public void put(BlockPlaceEvent event){
+//        String target = ToolClass.nmsblock(event.getBlockPlaced());
+//        int pos = target.indexOf('[');
+//        target = target.substring(0, pos);
+//        if(QuestscrollsCommandExecutor.isQuery){
+//            Main.SendManualObject(event.getPlayer(),"put(放置)", target);
+//        }
+//        new MainBusiness().Task("put", target ,event.getPlayer(),1);
+//    }
+//}

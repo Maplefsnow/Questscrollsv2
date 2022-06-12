@@ -23,7 +23,5 @@ public class Manualfish implements Listener {
                 new MainBusiness().Task("fish", ToolClass.nmsitem(e), event.getPlayer(), 1);
             }
         }
-
     }
-
 }

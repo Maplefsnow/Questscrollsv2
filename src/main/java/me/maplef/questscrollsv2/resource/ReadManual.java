@@ -9,6 +9,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*
 * 防呆设计 防不住故意为之的人
@@ -81,7 +83,7 @@ public class ReadManual {
                 quantity.add(fileConfiguration.getInt("Tasks." + (a+1) + ".quantity")); //读取任务数量 并添加到数量暂存
                 behaviors.add(fileConfiguration.getString("Tasks." + (a+1) + ".behavior")); //读取任务行为 并添加到 行为暂存
                 objects.add(Objects.requireNonNull(fileConfiguration.getString("Tasks." + (a + 1) + ".object")).replace("&","§")); //读取任务对象 并添加到 对象暂存
-                D.add(lores.get(a).indexOf("<d>") - 3 + (String.valueOf(quantity.get(a)).length())); // 获取 <d> 的位置 并添加到暂存
+                D.add(getSuoYing(lores.get(a)) - 3 + (String.valueOf(quantity.get(a)).length())); // 获取 <d> 的位置 并添加到暂存
                 M.add(lores.get(a).indexOf("<m>")); // 获取 <m> 的位置 并添加到暂存
 
             }
@@ -121,11 +123,13 @@ public class ReadManual {
                         Objects.requireNonNull(fileConfiguration.getString("reward_reel.Type")).replace("&","§"),                    //此任务对象的奖励卷轴的材质名
                         new ArrayList<>(JLores),
                         (ArrayList<String>) fileConfiguration.getStringList("reward_reel.Commands"), //此任务对象的奖励卷轴的具体执行指令
-                        fileConfiguration.getInt("reward_reel.KitNumber") //奖励占据的格子
+                        fileConfiguration.getInt("reward_reel.KitNumber"), //奖励占据的格子
+                        fileConfiguration.getInt("CustomModelData"), //CustomModelData值
+                        fileConfiguration.getInt("reward_reel.KitCustomModelData"), //奖励卷轴的 CustomModelData 值
+                        fileConfiguration.getBoolean("reward_reel.Commands_random")
                 ));
 
-                Bukkit.getServer().getLogger().info(s + " - Tasks: " + lores.size());
-//                Main.sendMessage(null, s + " - Tasks: " + lores.size());   //输出 任务lore的总数 代表着 读取到了多少任务
+                Main.sendMessage(null, s + " - Tasks: " + lores.size());   //输出 任务lore的总数 代表着 读取到了多少任务
 
             }
 
@@ -140,7 +144,7 @@ public class ReadManual {
             LoreTail.clear();
             JLores.clear();
         }
-        }
+    }
 
 
     public static boolean judgementlore(String a){
@@ -175,6 +179,19 @@ public class ReadManual {
         }
 
         return false;
+    }
+
+    public static int getSuoYing(String a){
+        String b = a;
+        Pattern YuanZi = Pattern.compile("§.");    //创建正则表达式的原子
+        Matcher zf2 = YuanZi.matcher(a);
+
+        while (zf2.find()){ //删除所有的颜色字符
+            b = b.replaceAll(zf2.group(),"");
+        }
+
+        return b.indexOf("<d>");
+
     }
 
 }
