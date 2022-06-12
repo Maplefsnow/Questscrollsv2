@@ -1,0 +1,44 @@
+# 是否让任务卷轴只保留一天 ( 每日任务卷轴 )
+Delete_every_other_day : true
+
+#是否开启音效
+sound_effect : true
+
+#Gui标题
+Gui_Title : "&4在这里提交物品..."
+
+#Gui 按钮的名字
+
+
+#%questscrolls_Task%变量的默认值 ( 玩家无进行中的任务时 )
+variable : "&7暂无"
+
+#%Questscrolls_Rank[Int]%变量的参数格式 ( 用于更好的处理排名条列 )
+Questscrolls_Rank : "&f&l玩家 &f▸ &c<name> &f· &e<number> &7&l次"
+# <name> 就是玩家名 <number> 就是具体的达成数量
+# 就算缺了也没关系
+
+#玩家完成一条任务播放什么
+sound_on_complete : "ENTITY_VILLAGER_YES"
+
+#玩家完成所有任务播放什么
+sound_on_complete_all : "ENTITY_VILLAGER_YES"
+
+on_Cumulative : false
+#是否开启累计奖励 ( 就算关闭也不会影响插件累计玩家的完成次数 )
+
+player_login_givetask : "&d每日猫事"
+#每次玩家首次登录服务器 将会获得的卷轴 ( 改后，已经领取过的玩家,同样无法再次领取 )
+#不启用则 “-”
+
+open_gui_cooling : false
+#重载配置文件 不对此项生效！ 只可通过重启服务器生效!
+
+Cumulative:
+  - 1:
+      - "say hello"
+      - "say hello"
+      - "say hello"
+#键 是次数
+#下面是执行对应的奖励
+#同样 没有内置礼包系统 ( 麻烦又没人用,干脆配合礼包插件用挺好的 )

@@ -1,0 +1,8 @@
+name: Questscrollsv2
+version: '${project.version}'
+main: me.maplef.questscrollsv2.Main
+api-version: 1.18
+commands:
+  questscrolls:
+    description: commands of Questscrollsv2
+    aliases: []

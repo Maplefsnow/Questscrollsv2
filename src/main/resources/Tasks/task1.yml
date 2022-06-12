@@ -1,0 +1,245 @@
+Type : "PAPER"
+#此卷轴的材质( 全大写 )
+
+Name : "&d每日猫事"
+#此卷轴的展示名 ( 必须保证是唯一的！ )
+#有防呆设计
+
+CustomModelData : 10002
+#自定义材质 配合 CustomModelData材质包使用可以自定义材质
+#只在 1.14 及以上 版本生效
+
+LoreHead :
+  - "&e------手持我右键以提交物品-------"
+#卷轴lore的头部
+#插件会自动加上 玩家名和时间 ( 觉得丑就去改源码 （ 删除任务卷轴的唯一性和时效性 ） )
+
+LoreTail :
+  - "&e----------------------------"
+  - "&a&o今日事，今日毕，勤劳的猫猫总会得到奖励"
+#卷轴lore的尾部
+
+Random_quantity : 4
+#随机几个任务? 不可大于任务总数！
+
+Tasks :
+#任务集
+
+  total : 22
+  #一共有几个?
+
+  1:
+    lore : "&a• &f用鱼竿钓上 &b<m> &f条鳕鱼，当前 &a<d> &f条"
+    behavior : "fish"
+    object : "cod"
+    quantity : 5
+  2:
+    lore : "&a• &f吃掉 &b<m> &f条烤鳕鱼干，当前吃了 &a<d> &f条"
+    behavior : "eat"
+    object : "cooked_cod"
+    quantity : 6
+  3:
+    lore : "&a• &f击落 &b<m> &f只幻翼，当前 &a<d> &f只"
+    behavior : "kill"
+    object : "phantom"
+    quantity : 3
+  4:
+    lore : "&a• &f开采 &b<m> &f块铁矿石，当前 &a<d> &f块"
+    behavior : "destroy"
+    object : "iron_ore"
+    quantity : 10
+  5:
+    lore : "&a• &f让我们说: “猫猫大陆好耶！” (<m>/<d>)"
+    behavior : "speak"
+    object : "猫猫大陆好耶！"
+    quantity : 1
+  6:
+    lore : "&a• &f收取并提交 &b<m> &f个小麦，当前 &a<d> &f个"
+    behavior : "submit"
+    object : "wheat"
+    quantity : 64
+  7:
+    lore : "&a• &f砍伐 &b<m> &f块白桦木，当前 &a<d> &f块"
+    behavior : "destroy"
+    object : "birch_log"
+    quantity : 32
+  8:
+    lore : "&a• &f合成 &b<m> &f支烟花火箭，当前 &a<d> &f支"
+    behavior : "craft"
+    object : "firework_rocket"
+    quantity : 60
+  9:
+    lore : "&a• &f击杀 &b<m> &f只末影人，当前 &a<d> &f只"
+    behavior : "kill"
+    object : "Enderman"
+    quantity : 100
+  10:
+    lore : "&a• &f制作 &b<m> &f台砂轮，当前 &a<d> &f台"
+    behavior : "craft"
+    object : "grindstone"
+    quantity : 5
+  11:
+    lore : "&a• &f种植 &b<m> &f株土豆，当前 &a<d> &f株"
+    behavior : "put"
+    object : "potato"
+    quantity : 64
+  12:
+    lore : "&a• &f种植 &b<m> &f株甜菜，当前 &a<d> &f株"
+    behavior : "put"
+    object : "beetroot_seeds"
+    quantity : 64
+  13:
+    lore : "&a• &f种植 &b<m> &f颗可可豆，当前 &a<d> &f颗"
+    behavior : "put"
+    object : "cocoa_beans"
+    quantity : 1
+  14:
+    lore : "&a• &f用 /mb 指令获取一次一言(<m>/<d>)"
+    behavior : "command"
+    object : "/mb hitokoto"
+    quantity : 1
+  15:
+    lore : "&a• &f用 /money 查看自己的猫猫积分(<m>/<d>)"
+    behavior : "command"
+    object : "/money"
+    quantity : 1
+  16:
+    lore : "&a• &f击杀 &b<m> &f只疣猪兽，当前 &a<d> &f只"
+    behavior : "kill"
+    object : "Hoglin"
+    quantity : 5
+  17:
+    lore : "&a• &f砍伐 &b<m> &f块诡异菌柄，当前 &a<d> &f块"
+    behavior : "destroy"
+    object : "warped_stem[axis=y]"
+    quantity : 20
+  18:
+    lore : "&a• &f找到并提交 &b<m> &f块菌光体，当前 &a<d> &f块"
+    behavior : "submit"
+    object : "shroomlight"
+    quantity : 10
+  19:
+    lore : "&a• &f砍伐 &b<m> &f块绯红菌柄，当前 &a<d> &f块"
+    behavior : "destroy"
+    object : "crimson_stem[axis=y]"
+    quantity : 20
+  20:
+    lore : "&a• &f挖掘 &b<m> &f块远古残骸，当前 &a<d> &f块"
+    behavior : "destroy"
+    object : "ancient_debris"
+    quantity : 1
+  21:
+    lore : "&a• &f找到并提交 &b<m> &f份荧石粉，当前 &a<d> &f份"
+    behavior : "submit"
+    object : "glowstone_dust"
+    quantity : 64
+  22:
+    lore : "&a• &f击杀一次凋灵(<m>/<d>)"
+    behavior : "kill"
+    object : "wither"
+    quantity : 1
+    
+  
+
+#此文件的对象仅供参考 ， 每个版本都不一样的！
+#如果任务不累计 请优先排查对象问题 ( 打开调试模式去一一核对 )
+
+#quantity 不可高于 99999 (9万9千 够你用了,不够的话去开源改源码 有说明)
+#lore可以自定义 支持颜色字符
+#lore <m> 要 位于 <d> 的前面 (有防呆设计)
+#如果你 behavior 或者 object 写错了 那么任务不会累计(不会报错)
+#<d> 和 <m> 只可以各写一个 不可以多写
+#object 每个版本的object都可能不同 如果遇到了任务不累计的情况 ( 请开调试模式 然后去核对你的任务对象 )
+
+reward_reel :
+#奖励卷轴
+  KitCustomModelData: 10001
+  #自定义材质 配合 CustomModelData材质包使用可以自定义材质
+  #只在 1.14 及以上 版本生效
+
+  KitNumber : 0
+  #奖品需要占据几个格子? ( 不足则不会成功领取奖励卷轴的奖励,奖励卷轴不会消失 )
+
+  Type : "PAPER"
+  #奖励卷轴的材质 ( 全大写 )
+  Name : "&6每日猫事奖励"
+  #奖励卷轴的名字 ( 必须保证是唯一的 )
+  #因为重复的后果不严重 所以没防呆设计
+  #重复的下场 ( 只会以第一个叫这个名字的为准,这个就白写 )
+
+  Lores :
+    - "&f完成每日猫事后可获得的奖励:"
+    - "&a✦ &e猫猫积分*40"
+    - "&a✦ &e经验值*500"
+    - "&a✦ &e命名牌*2"
+    - "&a✦ &e龙息*1"
+  #奖励卷轴的lore
+
+  Commands_random : false
+  #是否只从所有奖励中 随机 一条？
+
+  Commands :
+    - "money give <player> 40"
+    - "xp give <player> 500"
+    - "give <player> nametag 2"
+    - "give <player> dragonbreath 1"
+  #具体的奖励 ( 只支持指令 <player> 将会替换为玩家名 )
+
+  #为什么不内置 礼包系统?
+  # 1. 没人愿意用 ( 详见我的 回归玩家 插件 )
+  # 2. 市面上有完美的礼包插件
+  # 3. 多行指令的通用性高 ( 给予VIP,金币,点券 等等... )
+
+  #无论是 任务卷轴 还是 奖励卷轴 的Type
+  #都是 Material ( 物品材质枚举 )
+  # Material 并不支持所有的物品,而且每个版本都不一样 (mod物品别想了) 如果报错了 就换
+
+  #支持的任务: 14种
+  # destroy -- 破坏 (对象名 : 任何可以被破坏的东西 支持mod物品(不稳定) )
+  # kill    -- 击杀 (对象名 : 原版生物名 或者 mm怪物名)
+  # put     -- 放置 (对象名 : 任何可以放置的东西 支持mod物品(不稳定) )
+  # craft   -- 合成 (对象名 : 可以合成的物品 支持mod物品(不稳定) )
+  #合成是数量哦 比如将橡木合成4个木板 任务次数会直接加 4次
+  # fish    -- 钓鱼 (对象名 : 能钓上来的东西)
+  # enchant -- 附魔 (对象名 : 能附魔的东西 (只能在附魔台))
+  # eat    -- 食用 (对象名 : 能吃,喝的东西 包括 牛奶桶...)
+  # damage  -- 损坏物品 (对象名 : RPG物品名或者原版物品 且支持mod物品(不稳定) )
+  # command -- 执行指令 (对象名 : 任何指令 就算不存在也算 /aaa /1234)
+  # shear   -- 剪刀 (对象名 : 能被剪刀处理的动物 (羊,蘑菇牛) ... (如果mod里也有 那么也算 但是不稳定))
+  # upgrade -- 升级 (对象名 : 写"No")
+  # speak   -- 讲话 (对象名 : 具体的内容 (比如 : 233,hello,你们好))
+  # submit  -- 提交物品 (对象名 : 原版物品 或 RPG物品名字 mod物品理论支持)
+  # general -- 通用任务 (对象名 : 自定义)
+  #所有的对象名 都应该在调试模式获得！！！
+  #( 不要去网上找！！！ )
+  #
+  # 重点扯一下 general
+  # general 的作用在于,使得插件不一定非要监听某事件才能累计任务。
+  # 简单的例子 ( 通关副本 ) , 市面上的副本插件很多,如果想要插件能够监听
+  # 玩家通关副本的事件 , 那么势必要将 所有的副本插件导入 并注册监听器
+  # 这样会使得插件变得臃肿,且致命的是并不是所有的副本插件都有提供事件监听
+  # 那么,没有别的办法解决了吗 ？ 有的！ 于是乎 general 就出现了。
+  # general 的原理 比起 他的作用而言,简直就是 1比无穷了
+  # 首先 只需要在 任何 需要做任务的地方 添加这个命令
+  # 比如 在副本房间的配置文件的 达成奖励处( 的指令奖励处 )
+  # 添加 比如 /questscrolls general 奥德修斯巢穴 <player>
+  # 此时 奥德修饰巢穴 就是以一个任务 然后你在任务配置文件里写
+  # 1:
+  #   lore: "通关副本 奥德修斯巢穴 <m> 次 当前<d> 次"
+  #   behavior : "general"
+  #   object : "奥德修斯巢穴"
+  #   quantity : 1
+  # 当玩家通关后 会执行指令 /questscrolls general 奥德修斯巢穴 <player>
+  # 此时就相当于是 完成了一次 奥德修斯巢穴 的任务
+  # 同样的道理 可以用在任何 结束可以执行指令的地方
+  # 比如有一样道具 可以右击执行命令 你在末尾添加 /questscrolls general 新手奖励卷轴 <player>
+  # 然后配置文件也一样
+  # 1:
+  #   lore: "领取<m>|<d>次 新手奖励卷轴!"
+  #   behavior : "general"
+  #   object : "新手奖励卷轴"
+  #   quantity : 1
+  #
+  #当玩家右击这个奖励卷轴 然后执行指令的时候 执行到了 /questscrolls general 新手奖励卷轴 <player>
+  #便会视为 完成了一次 新手奖励卷轴 任务
+
